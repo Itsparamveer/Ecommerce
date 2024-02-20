@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif; /* Set default font family */
+        font-size: 16px; /* Set default font size */
+        line-height: 1.5; /* Set default line height */
+    }
+
+    /* Responsive font size */
+    @media only screen and (max-width: 940px) {
+        body {
+            font-size: 14px; /* Reduce font size for smaller screens */
+        }
+    }
+
+    .product-container {
+        float: left;
+        width: 40%; /* Adjust width to fit three columns */
+        margin: 30%; /* Add margin */
+        {% comment %} background-color: #f0f0f0; /* Adding a background color */ {% endcomment %}
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        /* Grid styles */
+        display: grid;
+        grid-template-rows: auto auto auto; /* Three rows for image, title, and description */
+        gap: 10px; /* Gap between grid items */
+    }
+
+    .product-container a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .product-image {
+        width: 100%; /* Make the image responsive */
+        grid-row: 1; /* Image occupies the first row */
+    }
+
+    .product-details {
+        width: 100%; /* Make the details container responsive */
+        /* Font style and size */
+        font-size: 1em; /* Reset font size */
+        {% comment %} margin:10px; {% endcomment %}
+    }
+    .des{
+            white-space: nowrap; 
+            width: 100px; 
+            overflow: hidden;
+            text-overflow: ellipsis; 
+    }
+
+    /* Styling for the button */
+    .btn-custom {
+        font-size: 1.2em; /* Adjust button font size */
+        font-weight: bold; /* Bold font weight */
+    }
+    
+    /* Media query for responsiveness */
+        @media only screen and (max-width: 768px) {
+        .product-container {
+        {% comment %} width: 90%; /* Adjust width for smaller screens */ {% endcomment %}
+        float: left;
+        width: 40%; /* Adjust width to fit three columns */
+        margin: 20px; /* Add margin */
+        padding: 10px; /* Add padding */
+        {% comment %} background-color: #f0f0f0; /* Adding a background color */ {% endcomment %}
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        /* Grid styles */
+        display: grid;
+        grid-template-rows: auto auto auto; /* Three rows for image, title, and description */
+        gap: 10px; /* Gap between grid items */
+            }
+        }
+
+            
+</style>
+<div class="">
+    <a href="{% url 'addproduct' %}">
+        <input type="submit" value="Add product" class="btn btn-info mt-5 btn-custom" >
+    </a>
+    <div class="row">
+        {% for product in products %}
+            {% if product.images %}
+                <div class="col-md-3"> <!-- Adjust number of columns for different screen sizes -->
+                    <div class="product-container">
+                        <a href="{% url 'editproduct' product.slug product.id %}">
+                            <img class="product-image img-fluid" src="{{ product.images.url }}" alt="Image of {{ product.title }}">
+                            <div class="product-details">
+                                <h1 class="fw-bold" style="font-size: 1.2em;">{{ product.title }}</h1> <!-- Adjusting font size for title -->
+                                <p class="mb-0 des">{{ product.description }}</p>
+                                <p class="font-italic">${{ product.get_display_price }}</p> <!-- Applying italic style to price -->
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+      
+{% endblock%}
+
+
+
+
+

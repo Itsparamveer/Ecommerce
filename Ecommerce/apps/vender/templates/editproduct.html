@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+   
+{% block title %}{{product.images.url}}{% endblock %}
+{% comment %} <div class="mt-4"><h3>welcome : {{user.username}}</h3></div> {% endcomment %}
+<style>
+    .prod{
+      margin-top: -40%;
+      margin-left:10%;
+   } 
+
+   @media only screen and (max-width: 932px) {
+      .prod{
+       margin-top:50%;
+       margin-left:5%;
+      }
+      
+       .mo{
+         width:100%
+         margin-left:0;
+         margin-right:auto;
+
+       }
+       
+    }
+    
+</style>
+
+   <div class="container ">
+     <div class="row mt-4" >
+       <div class="col-lg-4 mx-auto shadow  ">
+     <div class="alert alert-info mo">
+     <h2>
+         Update product
+     </h2>
+     </div>
+     {% for product in products %}
+            <div class=" p-4  ">
+               <form action="{% url 'editproduct' product.slug product.id %}" method="POST" enctype="multipart/form-data">
+               {% csrf_token %}
+               {{form.as_p}}
+               <hr>
+               <input type="submit" value="Update" class="btn btn-info">
+               <input type="submit" value="Delete" class="btn btn-info" name="delete">
+               </form>
+            </div>
+          {%endfor%}
+      </div>
+   </div>
+</div>
+
+
+
+   {% for product in products %}
+      {% if product.images %}
+      <div class="prod">
+      <a href="{% url 'editproduct' product.slug product.id %}"></a>
+         <img src="{{ product.images.url }}" alt="Image of {{ product.title }}" style="width:200px">
+         <div class="caption" style="width:200px;">
+            <h1>{{ product.title }}</h1>
+            <p>{{ product.description }}</p>
+            <p>${{ product.get_display_price }}</p>
+          </div>
+      </div> 
+       {%endif%}
+   {%endfor%}
+
+
+{%endblock%}

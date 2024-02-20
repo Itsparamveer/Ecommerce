@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'apps.core',
     'apps.userprofile',
     'apps.store',
+    'apps.vender',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +121,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS=[BASE_DIR,'static']  # this is where we keep our static files in the project directory
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
