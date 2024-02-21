@@ -1,32 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-   
-{% block title %}{{product.images.url}}{% endblock %}
+ {%load static %}  
+ {% block title %}{{product.images.url}}{% endblock %}
+ <link rel="stylesheet" href="{%static 'static\css\editproduct.css'%}">
 {% comment %} <div class="mt-4"><h3>welcome : {{user.username}}</h3></div> {% endcomment %}
-<style>
-    .prod{
-      margin-top: -40%;
-      margin-left:10%;
-   } 
-
-   @media only screen and (max-width: 932px) {
-      .prod{
-       margin-top:50%;
-       margin-left:5%;
-      }
-      
-       .mo{
-         width:100%
-         margin-left:0;
-         margin-right:auto;
-
-       }
-       
-    }
-    
-</style>
-
-   <div class="container ">
+<div class="container ">
      <div class="row mt-4" >
        <div class="col-lg-4 mx-auto shadow  ">
      <div class="alert alert-info mo">
@@ -48,8 +26,6 @@
       </div>
    </div>
 </div>
-
-
 
    {% for product in products %}
       {% if product.images %}

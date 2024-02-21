@@ -13,7 +13,7 @@
     </h2>
     </div>
     <div class=" p-4">
-      <form action="/add_item/" method="POST" enctype="multipart/form-data">
+      <form action="/add_item/" method="POST"  enctype="multipart/form-data">
       {% csrf_token %}
       {{form.as_p}}
       <hr>

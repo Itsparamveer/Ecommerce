@@ -98,7 +98,24 @@ def editproduct(request,slug,id):
             if form.is_valid():
                 form.save()
                 return redirect('product')
+            
     else:
         form = productForm(instance=product)
     return render(request, 'editproduct.html', {'form': form, 'products': products})
     
+def searchproduct(request):
+    if request.method == 'GET':
+        name = request.GET.get('searchproduct')
+        form =productForm()
+        products = Product.objects.filter(title__icontains=name)
+        return render(request,'index.html',context={'form':form,'products':products})
+    
+def venderproduct(request):
+     if request.user.is_authenticated:
+        user = request.user
+        if request.method == 'GET':
+            name = request.GET.get('venderproduct')
+            form =productForm()
+            products = Product.objects.filter(title__icontains=name,user=user)
+            return render(request,'product.html',context={'form':form,'products':products})
+        

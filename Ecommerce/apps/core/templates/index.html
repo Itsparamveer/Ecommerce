@@ -8,6 +8,7 @@
       <a href ="{% url 'product_detail' product.category.slug product.slug %}"/>
       {% if product.images %}
          <img src="{{ product.images.url }}" alt="Image of {{ product.title }}" style="width:100px">
+         
       {% endif %}
    {%endfor%}
 {% endblock%}

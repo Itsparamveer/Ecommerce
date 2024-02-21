@@ -8,8 +8,9 @@
     {{ form.as_p}}
     <hr>
    <input class="btn btn-success"  type="submit" name="submit" value="create Account" >
+   <a href="{% url 'login'%}"><input class=" btn btn-success" value="login here"></a>
     </form> 
 </div>
   </div>
-  <a href="{% url 'login'%}">login here</a>
+  
 {% endblock %}
