@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate,login as loginUser
 from apps.store.models import Product,Category
 from apps.vender.forms import productForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 
 

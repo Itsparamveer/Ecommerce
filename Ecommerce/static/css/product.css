@@ -17,6 +17,7 @@ body {
     width: 30%; /* Occupy full width */
     box-sizing: border-box;
     display: grid;
+    
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid layout */
     gap: 20px;
     padding: 10px; /* Add padding */
