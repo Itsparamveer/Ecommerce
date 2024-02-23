@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect , get_object_or_404
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
-from django.contrib.auth import authenticate,login as loginUser 
+from django.contrib.auth import logout as logoutUser
+from django.contrib.auth import authenticate,login as loginUser ,logout
 from apps.store.models import Product,Category
 from apps.vender.forms import productForm
 from django.contrib.auth.decorators import login_required
@@ -15,6 +16,9 @@ def login(request):
 
 
 def login(request):
+    if request.user.is_authenticated:
+        return redirect('product')
+
     if request.method == 'GET':
         form = AuthenticationForm()
         context = {"form": form}
@@ -22,12 +26,13 @@ def login(request):
     else:
         form = AuthenticationForm(data=request.POST)
         print(form.is_valid())
-
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username,password=password)
-            if user is not None:
+            if user is not None: 
+                request.session['username'] = user.username  
+                request.session['password'] = user.password     
                 loginUser(request,user)
             return redirect("product")
             print("Authenticated",user)
@@ -61,6 +66,8 @@ def product(request):
         user = request.user
         products = Product.objects.filter(user=user)
         print(products)
+        print( request.session.get('username'))
+        print(request.session.get('password'))
         context={'products':products}
         return render (request,'product.html',context)
 
@@ -120,3 +127,6 @@ def venderproduct(request):
             products = Product.objects.filter(title__icontains=name,user=user)
             return render(request,'product.html',context={'form':form,'products':products})
         
+def logout(request):
+    logoutUser(request)
+    return redirect('index')

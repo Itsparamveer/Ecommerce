@@ -26,6 +26,11 @@ SECRET_KEY = 'django-insecure-w@v$bdird9-k93dr8h%3bqtm(+1zv$$_z#i#sawwgg9qris_tt
 DEBUG = True
 
 ALLOWED_HOSTS = []
+LOGIN_SESSION_ID='login'
+SESSION_COOKIE_AGE=86400
+# LOGIN_SESSION_ID='index'
+LOGOUT_REDIRECT_URL='product'
+
 
 
 # Application definition
