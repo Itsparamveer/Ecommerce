@@ -135,17 +135,18 @@
     <a href="{% url 'addproduct' %}">
         <input type="submit" value="Add product" class="btn btn-info mt-5 btn-custom" >
     </a>
-    <div class="row"style="justify-content:center">
+    <div class="row" style="justify-content:center">
         {% for product in products %}
             {% if product.images %}
-                <div class="col-md-3" style="border: 1px solid darkgray;margin:10px;"> <!-- Adjust number of columns for different screen sizes -->
+                <div class="col-md-3" style="border: 1px solid darkgray;margin:10px;"> 
                     <div class="product-container">
                         <a href="{% url 'editproduct' product.slug product.id %}">
                             <img class="product-image img-fluid" src="{{ product.images.url }}" alt="Image of {{ product.title }}">
                             <div class="product-details">
-                                <h1 class="fw-bold" style="font-size: 1.2em;">{{ product.title }}</h1> <!-- Adjusting font size for title -->
+                                <h1 class="fw-bold" style="font-size: 1.2em; text-transform: capitalize;
+                                ">{{ product.title }}</h1> 
                                 <p class="mb-0 des">{{ product.description }}</p>
-                                <p class="font-italic">${{ product.get_display_price }}</p> <!-- Applying italic style to price -->
+                                <p class="font-italic">${{ product.get_display_price }}</p>
                             </div>
                         </a>
                     </div>
@@ -155,6 +156,36 @@
             <span class="text-center alert alert-danger">No product found</span>
         {% endfor %}
     </div>
+    <nav aria-label="...">
+      <ul class="pagination" style="justify-content:center">
+        {% if products.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ products.previous_page_number }}">Previous</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">Previous</span>
+          </li>
+        {% endif %}
+        
+        {% for i in products.paginator.page_range %}
+          <li class="page-item{% if i == products.number %} active{% endif %}">
+            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+          </li>
+        {% endfor %}
+        
+        {% if products.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ products.next_page_number }}">Next</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">Next</span>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+    
 
     <footer id="footer" class="overflow-hidden">
         <div class="mt-5 " style="background-color:lightgray;">

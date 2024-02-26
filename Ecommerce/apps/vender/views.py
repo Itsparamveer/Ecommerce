@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate,login as loginUser ,logout
 from apps.store.models import Product,Category
 from apps.vender.forms import productForm
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator,EmptyPage
 from django.contrib import messages
 
 
@@ -66,10 +66,13 @@ def product(request):
     if request.user.is_authenticated:
         user = request.user
         products = Product.objects.filter(user=user)
-        print(products)
-        print( request.session.get('username'))
-        print(request.session.get('password'))
-        context={'products':products}
+        p=Paginator(products,9)
+        # print(products,p.num_pages)
+        page_number=request.GET.get('page',1)
+        page=p.page(page_number)
+        # print( request.session.get('username'))
+        # print(request.session.get('password'))
+        context={'products':page}
         return render (request,'product.html',context)
 
 def addproduct(request):
