@@ -19,6 +19,15 @@
         text-decoration:none;
         color:black;  
     }
+    .message{
+      background-color:lightgreen;
+      width:30%;
+      justify-contact:center;
+      margin-top:10px;
+      margin-left:30%;
+      border-radius:50px;
+      text-align:center;
+    }
    
 </style>
 <body>
@@ -105,6 +114,23 @@
             </div>
         </nav>
     </div>
+    {% if messages %}
+      {% for message in messages %}
+       <div class="px-8 py-4 bg-teal-200 text-teal-800 message " id="message-box">
+        {{ message }}
+       </div>
+       {%endfor %}
+       <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                var messageBox = document.getElementById('message-box');
+                if (messageBox) {
+                    messageBox.remove();
+                }
+            }, 2000); 
+        });
+    </script>
+    {% endif %}
 
     <a href="{% url 'addproduct' %}">
         <input type="submit" value="Add product" class="btn btn-info mt-5 btn-custom" >

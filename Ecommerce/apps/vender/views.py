@@ -6,6 +6,7 @@ from apps.store.models import Product,Category
 from apps.vender.forms import productForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.contrib import messages
 
 
 
@@ -87,6 +88,7 @@ def add_item(request):
             product = form.save(commit=False)
             product.user=user
             product.save()
+            messages.success(request, 'Product created successfully!')
             return redirect("product")
         else:
             form = productForm()
@@ -100,11 +102,13 @@ def editproduct(request,slug,id):
     if request.method == 'POST':
         if 'delete' in request.POST:  
             product.delete()
+            messages.success(request, 'Product delete successfully!')
             return redirect('product')
         else:
             form = productForm(request.POST, request.FILES, instance=product) 
             if form.is_valid():
                 form.save()
+                messages.success(request, 'Product update successfully!')
                 return redirect('product')
             
     else:
