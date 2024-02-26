@@ -1,6 +1,9 @@
+<class="navbar-nav me-auto mb-2 mb-lg-0">
+    <class="nav-item">
+     
+       <a class="nav-link" href="{% url 'index' %}">Home</a>
 {% for category in categories %}
- <a href="{%url 'category_detail' category.slug %}" > {{ category.title }} </a>
+     <a href="{% url 'category_detail' category.slug %}">{{ category.title }}</a>
+{% endfor %}
 
- {% endfor %}
-
- <a herf="{% url 'about' %}"class="text-white">About</a>
+<a href="{% url 'about' %}" class="">About</a>

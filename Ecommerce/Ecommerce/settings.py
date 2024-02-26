@@ -27,7 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CART_SESSION_ID='cart'
+SESSION_COOKIE_AGE =86400
 
+LOGIN_REDIRECT_ID='index'
+LOGOUT_REDIRECT_URL="index"
 # Application definition
 
 INSTALLED_APPS = [
@@ -53,6 +57,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Ecommerce.urls'
+
 
 TEMPLATES = [
     {
@@ -119,8 +124,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS=[BASE_DIR,'static']  # this is where we keep our static files in the project directory
-
+STATICFILES_DIRS=[BASE_DIR,'static'] 
+ # this is where we keep our static files in the project directory
+MEDIA_URL='media/'
+MEDIA_ROOT=BASE_DIR/'media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

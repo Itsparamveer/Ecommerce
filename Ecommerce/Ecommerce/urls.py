@@ -17,11 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path , include
 from apps.core.views import index, about
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [  
-    path('', include('apps.store.urls')),
-    path('',index,name="index"),
-    path('about/', about ,name='about'),
     path('admin/', admin.site.urls),
-    path('',include("apps.core.urls" )), # home page
-]
+   path('about/', about, name='about'),
+    path('', include('apps.userprofile.urls')),
+    path('', include('apps.store.urls')),
+    path('', index, name='index'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

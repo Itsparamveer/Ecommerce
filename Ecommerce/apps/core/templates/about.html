@@ -1,6 +1,11 @@
-{%extends 'base.html'%}
-{% block title%}Aboutus{%endblock%}
-{%block content %}
+{% extends 'base.html'%}
+{% load menu %}
+{% load static %}
 
-<h1> This is  about page.........</h1>
-{%endblock%}
+<link rel="stylesheet" href="{% static 'static\css\base.css' %}">
+<script src="https://cdn.tailwindcss.com"></script>
+
+{% block title %}Aboutus{% endblock %}
+{%block contact %}
+  <h1> This is about us page</h1>
+{% endblock %}

@@ -45,3 +45,66 @@
         padding: 8px 10px;
     }
 }
+.button {
+    background-color: #008cba; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+/* Assuming you're using Tailwind CSS */
+.flex-wrap {
+    flex-wrap: nowrap; /* This prevents wrapping to the next line */
+    overflow-x: auto; /* Add horizontal scroll if needed */
+}
+
+/* Navbar styles */
+.main-navbar {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 10px 0;
+}
+
+.brand-name {
+    color: #ffffff;
+    font-size: 24px;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-form input[type="search"] {
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.search-form button {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin-left: 10px;
+}
+
+.navbar-toggler {
+    color: #ffffff;
+    border: none;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 991.98px) {
+    .top-navbar {
+        flex-direction: column;
+    }
+
+    .col-md-5 {
+        margin-top: 10px;
+    }
+}
