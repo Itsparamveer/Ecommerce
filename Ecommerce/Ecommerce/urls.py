@@ -23,8 +23,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [  
     path('admin/', admin.site.urls),
-   path('about/', about, name='about'),
+    path('about/', about, name='about'),
     path('', include('apps.userprofile.urls')),
+    path('about/', about ,name='about'),
+    path('admin', admin.site.urls),
+    # path('',include("apps.vender.urls")), # vender page
     path('', include('apps.store.urls')),
     path('', index, name='index'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
