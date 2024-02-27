@@ -19,6 +19,7 @@ from django.urls import path , include
 from apps.core.views import index, about
 from django.conf import settings
 from django.conf.urls.static import static
+<<<<<<< HEAD
 
 urlpatterns = [  
     path('about/', about ,name='about'),
@@ -35,3 +36,17 @@ if  settings.DEBUG:
 
 
 
+=======
+
+
+urlpatterns = [  
+    path('admin/', admin.site.urls),
+    path('about/', about, name='about'),
+    path('', include('apps.userprofile.urls')),
+    path('about/', about ,name='about'),
+    path('admin', admin.site.urls),
+    # path('',include("apps.vender.urls")), # vender page
+    path('', include('apps.store.urls')),
+    path('', index, name='index'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+>>>>>>> 57f03f1218b00303d4ec8310f88c18fe0d941ef3

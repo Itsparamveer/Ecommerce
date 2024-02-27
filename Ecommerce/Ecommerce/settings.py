@@ -32,7 +32,12 @@ SESSION_COOKIE_AGE=86400
 LOGOUT_REDIRECT_URL='product'
 
 
+CART_SESSION_ID='cart'
+SESSION_COOKIE_AGE =86400
 
+LOGIN_URL='login'
+LOGIN_REDIRECT_ID='index'
+LOGOUT_REDIRECT_URL="index"
 # Application definition
 
 INSTALLED_APPS = [
@@ -61,6 +66,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Ecommerce.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -72,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.store.context_processors.cart'
             ],
         },
     },
@@ -126,10 +133,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+<<<<<<< HEAD
 STATICFILES_DIRS=[BASE_DIR,'static']  # this is where we keep our static files in the project directory
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+=======
+STATICFILES_DIRS=[BASE_DIR,'static'] 
+ # this is where we keep our static files in the project directory
+MEDIA_URL='media/'
+MEDIA_ROOT=BASE_DIR/'media'
+>>>>>>> 57f03f1218b00303d4ec8310f88c18fe0d941ef3
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

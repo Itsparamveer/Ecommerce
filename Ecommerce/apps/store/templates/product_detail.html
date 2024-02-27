@@ -1,13 +1,32 @@
-{%extends 'base.html'%}
-{%block title %} The Products{% endblock %}
-{%block content%}
-    <h1 class="text-2xl">  {{ product.title }} </h1>
+{% extends "base.html" %}
+{% load menu %}
+{% load static %}
 
-    <p class="text-xs text-gray-500">${{ product.get_display_price}}</p>
+<link rel="stylesheet" href="{% static 'static\css\base.css' %}">
+<script src="https://cdn.tailwindcss.com"></script>
+
+{% block title %}{{ product.title }}{% endblock %}
+{%block contact %}
+
+    {% if product.image %}
+    <div class="image mb-4">
+        <img src="{{ product.image.url }}" alt="Image of {{ product.title }}">
+    </div>
+    {% endif %}
+
+    <h1 class="text-2xl">{{ product.title }}</h1>
+
+    <p class="text-xs text-gray-500">
+        ${{ product.get_display_price }}
+        -
+        {% comment %} <a href="{% url 'vendor_detail' product.user.id %}">{% first of product.user.get_full_name product.user.username %}</a> {% endcomment %}
+    </p>
 
     {% if product.description %}
-        <p class="mt-4"> 
+        <p class="mt-4">
             {{ product.description }}
         </p>
     {% endif %}
-{%endblock%}
+
+   <a href="{% url 'add_to_cart' product.id %}" class="button">Add to cart</a>   
+{% endblock %}
