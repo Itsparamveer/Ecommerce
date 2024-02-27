@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{%block content%}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<link rel="stylesheet" href="Ecommerce\static\css\vendor.css">
+
+<div class="container pt-4 mt-4">
+  <div class="col-lg-4 mx-auto shadow mt-4">
+  <div class="alert alert-info">
+  <h2>
+      Login here
+  </h2>
+  </div>
+  <div class=" p-4">
+  <form action="/login/" method="POST">
+  {% csrf_token %}
+  {{form.as_p}}
+  <div class="g-recaptcha" data-sitekey="6LdChYEpAAAAACtS0U_nSrPr9J5ufN38-5N29ULO"></div>
+  <hr>
+  <input type="submit" value="login" class="btn btn-info">
+  <a href="{% url 'signup' %}"  class="signbt"><input  value="signup" class="btn btn-info"></a>
+</form>
+</div>
+</div>
+</div>
+{%endblock%}

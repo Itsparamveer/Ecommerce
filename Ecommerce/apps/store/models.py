@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+
 # Create your models here.
 
 class Category(models.Model):
@@ -25,6 +26,7 @@ class Product(models.Model):
      price=models.IntegerField()
      created_at=models.DateField(auto_now_add=True)
      updated_at=models.DateField(auto_now=True)
+     images = models.ImageField(upload_to="images/",blank=True,null=True)
 
      class Meta:
            ordering=('-created_at',)
@@ -33,4 +35,5 @@ class Product(models.Model):
             return self.title
      def get_display_price(self):
            return self.price/100
+       
      

@@ -26,6 +26,11 @@ SECRET_KEY = 'django-insecure-w@v$bdird9-k93dr8h%3bqtm(+1zv$$_z#i#sawwgg9qris_tt
 DEBUG = True
 
 ALLOWED_HOSTS = []
+LOGIN_SESSION_ID='login'
+SESSION_COOKIE_AGE=86400
+# LOGIN_SESSION_ID='index'
+LOGOUT_REDIRECT_URL='product'
+
 
 
 # Application definition
@@ -40,6 +45,8 @@ INSTALLED_APPS = [
     'apps.core',
     'apps.userprofile',
     'apps.store',
+    'apps.vender',
+    'captcha'
 ]
 
 MIDDLEWARE = [
@@ -120,8 +127,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS=[BASE_DIR,'static']  # this is where we keep our static files in the project directory
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+RECAPTCHA_PUBLIC_KEY = '6LdChYEpAAAAACtS0U_nSrPr9J5ufN38-5N29ULO'
+RECAPTCHA_PRIVATE_KEY = '6Lc4YoEpAAAAAHrsMRsXaBnWCmd8XBHmTLa3_tfh'

@@ -1,0 +1,19 @@
+.prod{
+    margin-top: -40%;
+    margin-left:10%;
+ } 
+
+ @media only screen and (max-width: 932px) {
+    .prod{
+     margin-top:50%;
+     margin-left:5%;
+    }
+    
+     .mo{
+       width:100%
+       margin-left:0;
+       margin-right:auto;
+
+     }
+     
+  }

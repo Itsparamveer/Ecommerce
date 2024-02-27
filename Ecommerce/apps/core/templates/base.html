@@ -1,4 +1,6 @@
 {% load menu %}
+{% load static %}
+<link rel="stylesheet" href="{%static 'static\css\base.css'%}">
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,9 +22,9 @@
                         <h5 class="brand-name">My Ecommerce Site</h5>
                     </div>
                     <div class="col-md-5 my-auto">
-                        <form role="search">
+                        <form role="search" method="GET" action="{% url 'searchproduct' %}">
                             <div class="input-group">
-                                <input type="search" placeholder="Search your product" class="form-control" />
+                                <input type="search" placeholder="Search your product" name="searchproduct" class="form-control" />
                                 <button class="btn bg-white" type="submit">
                                     <i class="fa fa-search"></i>
                                 </button>
@@ -39,12 +41,12 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{%url 'about'%}">
-                                    <i class="fa fa-heart"></i> Aboutus
+                                    <i class="fa fa-heart"></i> About us
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-user"></i> Username 
+                                    <i class="fa fa-user"></i> User name 
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a></li>
@@ -71,6 +73,9 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}" name="product"> vender</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="templates\menu.html">All Categories</a>
