@@ -108,3 +108,4 @@ def product_detail(request,category_slug, slug):
 
 
 
+
