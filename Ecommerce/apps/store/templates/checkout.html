@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+<script src="https://cdn.tailwindcss.com"></script>
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+    <h1 class="mb-6 text-2xl">Checkout</h1>
+    <hr class="mt-4 mb-4">
+
+    <strong>Total cost:$  {{ cart.get_total_cost }}</strong><br /><br>
+    <form method="post" action=".">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ cart.get_total_cost }}
+
+
+    <button class="inline-block px-8 py-4 bg-teal-500 text-white">Checkout</button>
+    </form>
+{%endblock%}
+  
