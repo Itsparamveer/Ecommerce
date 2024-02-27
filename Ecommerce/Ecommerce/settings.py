@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'apps.userprofile',
     'apps.store',
     'apps.vender',
+    'captcha'
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+RECAPTCHA_PUBLIC_KEY = '6LdChYEpAAAAACtS0U_nSrPr9J5ufN38-5N29ULO'
+RECAPTCHA_PRIVATE_KEY = '6Lc4YoEpAAAAAHrsMRsXaBnWCmd8XBHmTLa3_tfh'

@@ -7,6 +7,8 @@ from apps.vender.forms import productForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator,EmptyPage
 from django.contrib import messages
+# from captcha.fields import ReCaptchaField
+import json
 
 
 
@@ -25,7 +27,8 @@ def login(request):
         context = {"form": form}
         return render(request, 'login.html', context=context)
     else:
-        form = AuthenticationForm(data=request.POST)
+        form = AuthenticationForm(data=request.POST )
+        # captcha = ReCaptchaField()
         print(form.is_valid())
         if form.is_valid():
             username = form.cleaned_data.get('username')
